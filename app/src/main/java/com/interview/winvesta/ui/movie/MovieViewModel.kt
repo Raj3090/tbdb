@@ -1,27 +1,29 @@
 package com.interview.winvesta.ui.movie
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.interview.winvesta.data.model.Movie
 import com.interview.winvesta.data.repository.MoviesRepository
-import kotlinx.coroutines.flow.Flow
 
 class MovieViewModel:ViewModel() {
 
    val moviesRepository:MoviesRepository= MoviesRepository();
 
     private var currentQueryValue: String? = null
-    private var currentSearchResult: Flow<PagingData<Movie>>? = null
+    private var currentFetchResult: LiveData<PagingData<Movie>>? = null
 
-    fun fetchPopularMovies(queryString: String): Flow<PagingData<Movie>> {
+    fun fetchPopularMovies(queryString: String): LiveData<PagingData<Movie>> {
         currentQueryValue = queryString
-        val newResult: Flow<PagingData<Movie>> =
+        val newResult: LiveData<PagingData<Movie>> =
             moviesRepository.getPopularMovieResultStream(queryString).cachedIn(viewModelScope)
-        currentSearchResult = newResult
+        currentFetchResult = newResult
         return newResult
     }
+
+
 
 
 }

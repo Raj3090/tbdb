@@ -1,8 +1,10 @@
 package com.interview.winvesta.data.repository
 
+import androidx.lifecycle.LiveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.interview.winvesta.data.api.MoviePagingSource
 import com.interview.winvesta.data.api.MovieService
 import com.interview.winvesta.data.model.Movie
@@ -12,11 +14,11 @@ class MoviesRepository() {
 
     private val movieService:MovieService=MovieService.create();
 
-    fun getPopularMovieResultStream(query: String): Flow<PagingData<Movie>> {
+    fun getPopularMovieResultStream(query: String): LiveData<PagingData<Movie>> {
         return Pager(
             config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
             pagingSourceFactory = { MoviePagingSource(movieService, query) }
-        ).flow
+        ).liveData
     }
 
     companion object {
