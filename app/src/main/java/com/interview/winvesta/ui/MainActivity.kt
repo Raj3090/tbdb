@@ -1,7 +1,8 @@
-package com.interview.winvesta
+package com.interview.winvesta.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.interview.winvesta.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
