@@ -12,6 +12,8 @@ buildscript {
         retrofit_version = '2.9.0'
         okhttp_version='4.9.0'
         paging_version = '3.0.0'
+        activity_version = "1.2.3"
+        glide_version = '4.10.0'
     }
 
     repositories {

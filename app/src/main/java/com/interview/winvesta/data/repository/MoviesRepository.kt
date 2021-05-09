@@ -14,11 +14,11 @@ class MoviesRepository() {
 
     private val movieService:MovieService=MovieService.create();
 
-    fun getPopularMovieResultStream(query: String): LiveData<PagingData<Movie>> {
+    fun getPopularMovieResultStream(query: String): Flow<PagingData<Movie>> {
         return Pager(
             config = PagingConfig(enablePlaceholders = false, pageSize = NETWORK_PAGE_SIZE),
             pagingSourceFactory = { MoviePagingSource(movieService, query) }
-        ).liveData
+        ).flow
     }
 
     companion object {

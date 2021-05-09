@@ -24,7 +24,7 @@ interface MovieService {
         private const val BASE_URL = "https://api.themoviedb.org/3/"
 
         fun create(): MovieService {
-            val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
+            val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
 
             val client = OkHttpClient.Builder()
                 .addInterceptor(logger)
