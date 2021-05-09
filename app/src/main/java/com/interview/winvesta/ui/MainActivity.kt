@@ -16,6 +16,8 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
+    val  POPULAR_MOVIES:String = "popularity.desc"
+
     private val adapter = MoviesAdapter()
     private var searchJob: Job? = null
     private val viewModel: MovieViewModel by viewModels()
@@ -28,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.moviesRecyclerView.adapter = adapter;
 
-        fetch("popularity.desc");
+        fetch(POPULAR_MOVIES);
     }
 
 
