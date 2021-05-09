@@ -2,6 +2,7 @@ package com.interview.winvesta.data.api
 
 import com.interview.winvesta.BuildConfig
 import com.interview.winvesta.data.model.PopularMovieResponse
+import com.interview.winvesta.utils.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,7 +22,6 @@ interface MovieService {
     ): PopularMovieResponse
 
     companion object {
-        private const val BASE_URL = "https://api.themoviedb.org/3/"
 
         fun create(): MovieService {
             val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
